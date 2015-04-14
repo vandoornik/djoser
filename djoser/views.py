@@ -9,14 +9,12 @@ from . import serializers, settings, utils
 
 User = get_user_model()
 
-
-class RootView(generics.GenericAPIView):
+@api_view(('GET',))
+def api_root(request, format=None):
     """
     Root endpoint - use one of sub endpoints.
     """
-    serializer_class = BaseSerializer
-    def get(self, request, format=None):
-        urls_mapping = {
+    urls_mapping = {
             'me': 'user',
             'register': 'register',
             'login': 'login',
@@ -26,12 +24,12 @@ class RootView(generics.GenericAPIView):
             'change-password': 'set_password',
             'password-reset': 'password_reset',
             'password-reset-confirm': 'password_reset_confirm',
-        }
+    }
 
-        return Response(
+    return Response(
             dict([(key, reverse(url_name, request=request, format=format))
                   for key, url_name in urls_mapping.items()])
-        )
+    )
 
 
 class RegistrationView(utils.SendEmailViewMixin, generics.CreateAPIView):
