@@ -90,7 +90,7 @@ class LogoutView(generics.GenericAPIView):
     """
     Use this endpoint to logout user (remove user authentication token).
     """
-    serializer_class = serializers.UserLoginSerializer
+    serializer_class = serializers.UserLogoutSerializer
     permission_classes = (
         permissions.IsAuthenticated,
     )

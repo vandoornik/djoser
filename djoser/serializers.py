@@ -110,6 +110,12 @@ class UserLoginSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(constants.INVALID_CREDENTIALS_ERROR)
 
 
+class UserLogoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ()
+
+
 class PasswordResetSerializer(serializers.Serializer):
     email = serializers.EmailField()
 
