@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
-from rest_framework import generics, permissions, status, response, serializers
+from rest_framework import generics, permissions, status, response
+from rest_framework.serializers import ListSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -13,7 +14,7 @@ class RootView(generics.GenericAPIView):
     """
     Root endpoint - use one of sub endpoints.
     """
-    serializer_class = serializers.ListSerializer
+    serializer_class = ListSerializer
     def get(self, request, format=None):
         urls_mapping = {
             'me': 'user',
