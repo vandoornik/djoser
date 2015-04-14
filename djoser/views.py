@@ -14,7 +14,7 @@ class RootView(generics.GenericAPIView):
     """
     Root endpoint - use one of sub endpoints.
     """
-    serializer_class = ListSerializer
+    serializer_class = ListSerializer(many=True)
     def get(self, request, format=None):
         urls_mapping = {
             'me': 'user',
