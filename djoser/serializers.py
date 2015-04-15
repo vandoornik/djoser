@@ -90,15 +90,15 @@ class UserLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            User.USERNAME_FIELD,'password',
+            'username','password',
         )
         write_only_fields = (
             'password',
         )
 
-    #def __init__(self, *args, **kwargs):
-    #    super(UserLoginSerializer, self).__init__(*args, **kwargs)
-    #    self.fields[User.USERNAME_FIELD] = create_username_field()
+    def __init__(self, *args, **kwargs):
+        super(UserLoginSerializer, self).__init__(*args, **kwargs)
+        self.fields[User.USERNAME_FIELD] = create_username_field()
 
     def validate(self, attrs):
         self.object = authenticate(username=attrs[User.USERNAME_FIELD], password=attrs['password'])

@@ -72,6 +72,7 @@ class RegistrationView(utils.SendEmailViewMixin, generics.CreateAPIView):
 class LoginView(utils.ActionViewMixin, generics.GenericAPIView):
     """
     Use this endpoint to obtain user authentication token.
+
     """
     serializer_class = serializers.UserLoginSerializer
     permission_classes = (
