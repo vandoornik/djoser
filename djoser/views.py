@@ -71,6 +71,10 @@ class RegistrationView(utils.SendEmailViewMixin, generics.CreateAPIView):
         context['partner_name'] = self.request.data['partner_name'] if 'partner_name' in self.request.data else ''
         context['is_customer'] = self.request.data['is_customer'] if 'is_customer' in self.request.data else False
         context['app'] = self.request.data['app'] if 'app' in self.request.data else 'PartnerPortal' 
+        context['activation'] = self.request.data['activation'] if 'activation' in self.request.data else True
+        print "in djoser:"
+        print self.request.data['ready_measures']
+        context['ready_measures'] = self.request.data['ready_measures'].split(',') if 'ready_measures' in self.request.data else None
         print context
         return context
 
