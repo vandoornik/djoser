@@ -33,6 +33,7 @@ def send_email(to_email, from_email, context, subject_template_name,
     if html_body_template_name is not None:
         html_email = loader.render_to_string(html_body_template_name, context)
         email_message.attach_alternative(html_email, 'text/html')
+    #email_message.attach(filename = "hellokitty.jpg", mimetype = "image/jpeg", content = 'abc')
     email_message.send()
 
 

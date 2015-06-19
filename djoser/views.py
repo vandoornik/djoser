@@ -75,6 +75,8 @@ class RegistrationView(utils.SendEmailViewMixin, generics.CreateAPIView):
         #print "in djoser:"
         #print self.request.data['ready_measures']
         context['ready_measures'] = self.request.data['ready_measures'].split(',') if 'ready_measures' in self.request.data else None
+        context['download_link'] = self.request.data['download_link'] if 'download_link' in self.request.data else None
+
         print context
         return context
 
